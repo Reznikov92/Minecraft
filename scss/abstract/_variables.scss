@@ -1,0 +1,30 @@
+@use "sass:map";
+
+$font-main: 'Press Start 2P', cursive;
+
+$colors: (
+  bg-body: #333333,
+  bg-ui: #212121,
+  bg-dark: #121212,
+  bg-table-alt: #2d2d2d,
+  border-light: #4a4a4a,
+  border-dark: #555555,
+  text-white: #ffffff,
+  text-gray: #aaaaaa,
+  text-muted: #777777,
+  accent-gold: #ffcc00,
+  accent-diamond: #55ffff,
+  accent-emerald: #55ff55,
+  btn-green: #5c8e32,
+  btn-green-hover: #6da73b,
+  btn-gray: #c6c6c6,
+  btn-gray-hover: #d5d5d5,
+  tag-hd: #aa00aa,
+  tag-classic: #00aa00,
+  tag-alex: #df691a,
+  tag-3d: #33ff33
+);
+
+@function color($key) {
+  @return map.get($colors, $key); 
+}

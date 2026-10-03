@@ -1,0 +1,15 @@
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'tablet' {
+    @media (max-width: 62rem) { @content; } // 992px
+  }
+  @else if $breakpoint == 'mobile' {
+    @media (max-width: 37.5rem) { @content; } // 600px
+  }
+  @else if $breakpoint == 'small-mobile' {
+    @media (max-width: 25rem) { @content; } // 400px
+  }
+}
+
+@mixin pixel-border-inset($dark-color, $light-color) {
+  box-shadow: inset -0.1875rem -0.1875rem 0 $dark-color, inset 0.1875rem 0.1875rem 0 $light-color; 
+}

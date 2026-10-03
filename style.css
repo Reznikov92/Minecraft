@@ -1,0 +1,611 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Press Start 2P";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../../assets/fonts/PressStart2P-Regular.ttf") format("truetype");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 125%;
+}
+
+.page__body {
+  background-color: #333333;
+  font-family: "Press Start 2P", cursive;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.mc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3%;
+  background-color: #212121;
+  border-bottom: 0.25rem solid #4a4a4a;
+  box-shadow: 0 0.25rem 0 #121212;
+  height: 4.0625rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.mc-header__logo-block {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.mc-header {
+  /* Рисуем пиксельную голову Стива из блоков */
+}
+.mc-header__avatar {
+  width: 2rem;
+  height: 2rem;
+  background-color: #f1c27d;
+  border: 0.125rem solid #000;
+  position: relative;
+  box-shadow: inset -0.125rem -0.125rem 0 #dbab67;
+  flex-shrink: 0;
+}
+.mc-header__steve-eyes {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.25rem;
+  width: 0.375rem;
+  height: 0.3125rem;
+  background-color: #55ffff;
+  box-shadow: 0.75rem 0 0 #55ffff, 0.375rem 0 0 #ffffff, 1.125rem 0 0 #ffffff;
+}
+.mc-header__nickname {
+  font-size: 0.625rem;
+  text-shadow: 0.125rem 0.125rem 0 #3f3f3f;
+  white-space: nowrap;
+}
+@media (max-width: 62rem) {
+  .mc-header__nickname {
+    display: none;
+  }
+}
+.mc-header {
+  /* Навигация на ПК */
+}
+.mc-header__nav {
+  display: flex;
+  gap: 0.3125rem;
+  align-items: center;
+}
+@media (max-width: 62rem) {
+  .mc-header__nav {
+    display: none;
+  }
+}
+.mc-header__nav-link {
+  color: #aaaaaa;
+  text-decoration: none;
+  font-size: 0.5625rem;
+  padding: 0.5rem 0.625rem;
+  border: 0.125rem solid transparent;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+.mc-header__nav-link:hover {
+  color: #ffffff;
+  background-color: #3a3a3a;
+  border: 0.125rem solid #555555;
+}
+.mc-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.mc-header__socials {
+  display: flex;
+  gap: 0.625rem;
+  font-size: 1rem;
+}
+@media (max-width: 62rem) {
+  .mc-header__socials {
+    display: none;
+  }
+}
+.mc-header__icon-link {
+  text-decoration: none;
+}
+@media (max-width: 62rem) {
+  .mc-header {
+    height: 3.4375rem;
+    padding: 0 0.625rem;
+  }
+}
+
+/* Пиксельная зеленая кнопка "Заказать" */
+.mc-btn-cta {
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.5625rem;
+  color: #ffffff;
+  background-color: #5c8e32;
+  border: 0.125rem solid #000;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  text-decoration: none;
+  box-shadow: inset -0.1875rem -0.1875rem 0 #3b5c20, inset 0.1875rem 0.1875rem 0 #7cae4f;
+}
+.mc-btn-cta:hover {
+  background-color: #6da73b;
+}
+.mc-btn-cta:active {
+  transform: translateY(0.125rem);
+  box-shadow: inset -0.1875rem -0.1875rem 0 #2a4017, inset 0.1875rem 0.1875rem 0 #5c8e32;
+}
+@media (max-width: 62rem) {
+  .mc-btn-cta {
+    font-size: 0.5rem;
+    padding: 0.375rem 0.5rem;
+  }
+}
+
+/* ================= МОБИЛЬНЫЕ СТИЛИ (БУРГЕР И ШТОРКА) ================= */
+.mc-burger {
+  display: none;
+}
+@media (max-width: 62rem) {
+  .mc-burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.1875rem;
+    width: 2.1875rem;
+    height: 2.1875rem;
+    background-color: #c6c6c6;
+    border: 0.125rem solid #000000;
+    cursor: pointer;
+    padding: 0;
+    box-shadow: inset -0.1875rem -0.1875rem 0 #555555, inset 0.1875rem 0.1875rem 0 #ffffff;
+  }
+  .mc-burger:hover {
+    background-color: #d5d5d5;
+  }
+  .mc-burger__line {
+    width: 1.125rem;
+    height: 0.1875rem;
+    background-color: #000000;
+  }
+}
+
+.mc-mobile-menu {
+  display: none;
+}
+@media (max-width: 62rem) {
+  .mc-mobile-menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 15.625rem;
+    height: 100vh;
+    background-color: #121212;
+    border-left: 0.25rem solid #4a4a4a;
+    z-index: 999;
+    padding: 1.25rem;
+    box-shadow: -0.625rem 0 0 rgba(0, 0, 0, 0.4);
+    transform: translateX(100%);
+    transition: transform 0.2s ease-out;
+  }
+  .mc-mobile-menu--open {
+    transform: translateX(0);
+  }
+  .mc-mobile-menu__close {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+    margin-bottom: 2rem;
+  }
+  .mc-mobile-menu__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .mc-mobile-menu__link {
+    font-family: "Press Start 2P", cursive;
+    font-size: 0.625rem;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.625rem;
+    border: 0.125rem solid transparent;
+  }
+  .mc-mobile-menu__link:hover {
+    color: #55ffff;
+    background-color: #212121;
+    border-color: #4a4a4a;
+  }
+}
+
+.mc-filter-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.875rem;
+  background-color: #212121;
+  border: 0.25rem solid #4a4a4a;
+  padding: 0.9375rem;
+  box-shadow: 0 0.375rem 0 #121212;
+}
+.mc-filter-bar__input {
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.625rem;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #000000;
+  border: 0.1875rem solid #555555;
+  color: #ffffff;
+  outline: none;
+  box-shadow: inset 0.125rem 0.125rem 0 #121212;
+}
+.mc-filter-bar__input:focus {
+  border-color: #ffffff;
+}
+.mc-filter-bar__buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+@media (max-width: 25rem) {
+  .mc-filter-bar__buttons {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 0.3125rem;
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+  }
+  .mc-filter-bar__buttons::-webkit-scrollbar {
+    height: 0.25rem;
+  }
+  .mc-filter-bar__buttons::-webkit-scrollbar-thumb {
+    background-color: #555555;
+  }
+}
+.mc-filter-bar__btn {
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.5rem;
+  padding: 0.5rem 0.625rem;
+  background-color: #c6c6c6;
+  border: 0.125rem solid #000;
+  cursor: pointer;
+  color: #000000;
+  flex-grow: 1;
+  text-align: center;
+  box-shadow: inset -0.1875rem -0.1875rem 0 #555555, inset 0.1875rem 0.1875rem 0 #ffffff;
+}
+.mc-filter-bar__btn:hover {
+  background-color: #d5d5d5;
+}
+.mc-filter-bar__btn--active {
+  background-color: #5c8e32;
+  color: #ffffff;
+  box-shadow: inset -0.1875rem -0.1875rem 0 #2a4017, inset 0.1875rem 0.1875rem 0 #7cae4f;
+}
+@media (max-width: 25rem) {
+  .mc-filter-bar__btn {
+    flex-shrink: 0;
+    flex-grow: 0;
+    font-size: 0.4375rem;
+  }
+}
+
+/* ================= КОНТЕЙНЕР MAIN ================= */
+.mc-main {
+  flex: 1;
+  padding: 2.5rem 5%;
+  max-width: 75rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ================= СЕКЦИЯ ПРИВЕТСТВИЯ ================= */
+.hero-section {
+  text-align: center;
+  margin-bottom: 1.875rem;
+}
+.hero-section__title {
+  font-size: 1.375rem;
+  margin-bottom: 0.75rem;
+  text-shadow: 0.1875rem 0.1875rem 0 #000000;
+  color: #ffcc00;
+  line-height: 1.4;
+}
+@media (max-width: 37.5rem) {
+  .hero-section__title {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 25rem) {
+  .hero-section__title {
+    font-size: 0.8125rem;
+  }
+}
+
+/* ================= ЧИСТАЯ РЕЗИНОВАЯ СЕТКА КАРТОЧЕК ================= */
+.skins-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3.125rem;
+}
+@media (max-width: 37.5rem) {
+  .skins-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+.skins-grid {
+  /* ================= СТИЛИ КАРТОЧЕК (УСИЛЕНЫ ЧЕРЕЗ РОДИТЕЛЯ) ================= */
+}
+.skins-grid .mc-card {
+  background-color: #212121;
+  border: 0.25rem solid #4a4a4a;
+  box-shadow: 0 0.375rem 0 #121212;
+  padding: 0.9375rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  transition: transform 0.2s ease-out, border-color 0.2s ease-out, box-shadow 0.2s ease-out;
+  /* Эффект наведения мышки */
+}
+.skins-grid .mc-card:hover {
+  transform: translateY(-0.3125rem);
+  border-color: #55ffff;
+  box-shadow: 0 0.6875rem 0 #121212, 0 0 0.9375rem rgba(85, 255, 255, 0.4);
+  cursor: pointer;
+}
+.skins-grid .mc-card:hover .mc-card__name {
+  color: #ffcc00;
+}
+@media (max-width: 25rem) {
+  .skins-grid .mc-card {
+    padding: 0.75rem;
+  }
+}
+.skins-grid .mc-card {
+  /* Квадратный контейнер под картинки 400x400px */
+}
+.skins-grid .mc-card__preview {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border: 0.1875rem solid #000000;
+  margin-bottom: 0.9375rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1a1a1a;
+  background-image: linear-gradient(45deg, #2d2d2d 25%, transparent 25%), linear-gradient(-45deg, #2d2d2d 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #2d2d2d 75%), linear-gradient(-45deg, transparent 75%, #2d2d2d 75%);
+  background-size: 1.25rem 1.25rem;
+}
+.skins-grid .mc-card {
+  /* Рендеринг пикселей без размытия */
+}
+.skins-grid .mc-card__img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+.skins-grid .mc-card__name {
+  font-size: 0.625rem;
+  margin-bottom: 0.625rem;
+  min-height: 1.875rem;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  transition: color 0.2s ease-out;
+}
+.skins-grid .mc-card {
+  /* Вкладки типов (HD и 3D) */
+}
+.skins-grid .mc-card__tag {
+  font-size: 0.5rem;
+  padding: 0.25rem 0.375rem;
+  border: 0.125rem solid #000;
+  margin-bottom: 0.9375rem;
+}
+.skins-grid .mc-card__tag--hd {
+  background-color: #aa00aa;
+  color: #fff;
+}
+.skins-grid .mc-card__tag--3d {
+  background-color: #33ff33;
+  color: #000;
+}
+.skins-grid .mc-card {
+  /* Пиксельная кнопка скачать */
+}
+.skins-grid .mc-card__btn-download {
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.5625rem;
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #c6c6c6;
+  border: 0.125rem solid #000;
+  cursor: pointer;
+  color: #000000;
+  box-shadow: inset -0.1875rem -0.1875rem 0 #555555, inset 0.1875rem 0.1875rem 0 #ffffff;
+}
+.skins-grid .mc-card__btn-download:hover {
+  background-color: #d5d5d5;
+}
+.skins-grid .mc-card__btn-download:active {
+  transform: translateY(0.0625rem);
+}
+
+.prices-section {
+  padding-top: 1.875rem;
+  margin-bottom: 1.875rem;
+}
+.prices-section__title {
+  font-size: 0.9375rem;
+  text-align: center;
+  margin-bottom: 1.25rem;
+  text-shadow: 0.125rem 0.125rem 0 #000000;
+  color: #55ffff;
+}
+@media (max-width: 25rem) {
+  .prices-section__title {
+    font-size: 0.75rem;
+  }
+}
+.prices-section__table-container {
+  background-color: #212121;
+  border: 0.25rem solid #4a4a4a;
+  box-shadow: 0 0.375rem 0 #121212;
+  padding: 0.9375rem;
+  overflow-x: auto;
+}
+.prices-section__info-box {
+  margin-top: 1.25rem;
+  background-color: #1a1a1a;
+  border: 0.1875rem solid #4a4a4a;
+  padding: 0.75rem;
+  box-shadow: inset 0.125rem 0.125rem 0 #000;
+}
+.prices-section__info-item {
+  font-size: 0.5rem;
+  color: #aaaaaa;
+  line-height: 1.8;
+  margin-bottom: 0.375rem;
+  text-shadow: 0.0625rem 0.0625rem 0 #000;
+}
+@media (max-width: 25rem) {
+  .prices-section__info-item {
+    font-size: 0.4375rem;
+  }
+}
+
+.mc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.5625rem;
+  text-align: left;
+  min-width: 34.375rem;
+}
+.mc-table__row {
+  border-bottom: 0.0625rem solid #4a4a4a;
+}
+.mc-table__row:nth-child(even) {
+  background-color: #2d2d2d;
+}
+.mc-table__row--header {
+  background-color: #1a1a1a;
+  color: #ffcc00;
+}
+.mc-table__row .mc-table__cell--price {
+  color: #55ff55;
+}
+.mc-table__cell {
+  padding: 0.625rem;
+  border: 0.125rem solid #4a4a4a;
+  color: #ffffff;
+}
+.mc-table__cell--th {
+  color: #ffcc00;
+}
+@media (max-width: 25rem) {
+  .mc-table__cell {
+    padding: 0.375rem;
+    font-size: 0.4375rem;
+  }
+}
+
+.mc-footer {
+  background-color: #121212;
+  border-top: 0.25rem solid #4a4a4a;
+  padding: 1.5625rem 0.9375rem;
+  text-align: center;
+  font-size: 0.5rem;
+  color: #777777;
+  line-height: 1.8;
+  margin-top: auto;
+}
+.mc-footer__contacts {
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.9375rem;
+  border-bottom: 0.125rem dashed #4a4a4a;
+}
+.mc-footer__contacts-title {
+  font-size: 0.5625rem;
+  color: #ffcc00;
+  margin-bottom: 0.75rem;
+  text-shadow: 0.0625rem 0.0625rem 0 #000;
+}
+.mc-footer__contacts-grid {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.mc-footer__contact-item {
+  font-size: 0.5rem;
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #212121;
+  border: 0.125rem solid #4a4a4a;
+  padding: 0.625rem;
+  box-shadow: 0 0.25rem 0 #000000;
+  flex-grow: 1;
+  max-width: 16.25rem;
+  text-align: center;
+}
+.mc-footer__contact-item:hover {
+  background-color: #3a3a3a;
+  border-color: #ffffff;
+}
+.mc-footer__contact-item--tg:hover {
+  color: #55ffff;
+}
+.mc-footer__contact-item--ds:hover {
+  color: #5555ff;
+}
+.mc-footer__contact-item--tw:hover {
+  color: #1da1f2;
+}
+@media (max-width: 25rem) {
+  .mc-footer__contact-item {
+    width: 100%;
+    max-width: 100%;
+    font-size: 0.4375rem;
+  }
+}
+.mc-footer__disclaimer {
+  margin-top: 0.625rem;
+  color: #555555;
+}
+.mc-footer__links {
+  margin-top: 0.625rem;
+}
+.mc-footer__link {
+  color: #aaaaaa;
+  text-decoration: none;
+}
+.mc-footer__link:hover {
+  color: #ffffff;
+}
+
+/*# sourceMappingURL=style.css.map */

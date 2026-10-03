@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    /* Окружение и цель компиляции */
+    "target": "es2022",
+    "lib": ["es2022", "dom", "dom.iterable"],
+    
+    /* Настройки модулей для сборщика Vite */
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+
+    /* Строгие проверки безопасности и типов */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "skipLibCheck": true,
+    
+    /* Совместимость и требования verbatimModuleSyntax */
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force"
+  },
+  "include": ["script/**/*"]
+}

@@ -1,0 +1,13 @@
+// 1. Подключаем абстракции (Переменные и миксины)
+@use 'abstract/variables';
+@use 'abstract/mixins';
+
+// 2. Базовые стили
+@use 'base/reset';
+
+// 3. Компоненты сайта
+@use 'components/header';
+@use 'components/filter-bar';
+@use 'components/skins-grid';
+@use 'components/prices';
+@use 'components/footer';

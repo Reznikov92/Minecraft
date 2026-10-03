@@ -1,0 +1,17 @@
+{
+  "name": "minecraft-skins",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Профессиональный адаптивный одностраничный сайт (Landing Page) для заказа и скачивания кастомных 2D/3D скинов в кубической стилистике игры **Minecraft**. Проект разработан с использованием современных стандартов фронтенд-разработки.",
+  "main": "index.js",
+    "scripts": {
+    "dev": "vite",
+    "build":"tsc && vite build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^8.3.1"
+  }
+}
