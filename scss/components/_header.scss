@@ -7,9 +7,9 @@
   align-items: center;
   padding: 0 3%;
   background-color: vars.color(bg-ui);
-  border-bottom: 0.25rem solid vars.color(border-light); 
-  box-shadow: 0 0.25rem 0 vars.color(bg-dark); 
-  height: 4.0625rem; 
+  border-bottom: 0.25rem solid vars.color(border-light);
+  box-shadow: 0 0.25rem 0 vars.color(bg-dark);
+  height: 4.0625rem;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -17,32 +17,23 @@
   &__logo-block {
     display: flex;
     align-items: center;
-    gap: 0.5rem; 
+    gap: 0.5rem;
   }
 
-  /* Рисуем пиксельную голову Стива из блоков */
-  &__avatar {
-    width: 2rem;
-    height: 2rem;
-    background-color: #f1c27d; 
-    border: 0.125rem solid #000;
-    position: relative;
-    box-shadow: inset -0.125rem -0.125rem 0 #dbab67;
+  &__logo-img {
+    height: 2.5rem; // Задает аккуратную высоту логотипа под размер вашей шапки
+    width: auto; // Пропорции картинки сохранятся автоматически
+    object-fit: contain;
     flex-shrink: 0;
+
+    @include mix.respond-to('tablet') {
+      height: 2rem; // Чуть уменьшаем логотип на смартфонах, чтобы всё влезло
+    }
   }
 
-  &__steve-eyes {
-    position: absolute;
-    top: 0.75rem;
-    left: 0.25rem;
-    width: 0.375rem;
-    height: 0.3125rem;
-    background-color: #55ffff; 
-    box-shadow: 0.75rem 0 0 #55ffff, 0.375rem 0 0 #ffffff, 1.125rem 0 0 #ffffff;
-  }
 
   &__nickname {
-    font-size: 0.625rem; 
+    font-size: 0.625rem;
     text-shadow: 0.125rem 0.125rem 0 #3f3f3f;
     white-space: nowrap;
 
@@ -65,8 +56,8 @@
   &__nav-link {
     color: vars.color(text-gray);
     text-decoration: none;
-    font-size: 0.5625rem; 
-    padding: 0.5rem 0.625rem; 
+    font-size: 0.5625rem;
+    padding: 0.5rem 0.625rem;
     border: 0.125rem solid transparent;
     white-space: nowrap;
     display: flex;
@@ -82,13 +73,13 @@
   &__actions {
     display: flex;
     align-items: center;
-    gap: 0.75rem; 
+    gap: 0.75rem;
   }
 
   &__socials {
     display: flex;
-    gap: 0.625rem; 
-    font-size: 1rem; 
+    gap: 0.625rem;
+    font-size: 1rem;
 
     @include mix.respond-to('tablet') {
       display: none; // Убираем иконки на смартфонах, чтобы не перегружать шапку
@@ -100,7 +91,7 @@
   }
 
   @include mix.respond-to('tablet') {
-    height: 3.4375rem; 
+    height: 3.4375rem;
     padding: 0 0.625rem;
   }
 }
@@ -108,11 +99,11 @@
 /* Пиксельная зеленая кнопка "Заказать" */
 .mc-btn-cta {
   font-family: vars.$font-main;
-  font-size: 0.5625rem; 
+  font-size: 0.5625rem;
   color: vars.color(text-white);
   background-color: vars.color(btn-green);
   border: 0.125rem solid #000;
-  padding: 0.5rem 0.75rem; 
+  padding: 0.5rem 0.75rem;
   cursor: pointer;
   text-align: center;
   white-space: nowrap;
@@ -129,7 +120,7 @@
   }
 
   @include mix.respond-to('tablet') {
-    font-size: 0.5rem; 
+    font-size: 0.5rem;
     padding: 0.375rem 0.5rem;
   }
 }
@@ -138,14 +129,14 @@
 
 // Кнопка бургера (серая кнопка интерфейса с 3 черными линиями)
 .mc-burger {
-  display: none; 
+  display: none;
 
   @include mix.respond-to('tablet') {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 0.1875rem; 
+    gap: 0.1875rem;
     width: 2.1875rem;
     height: 2.1875rem;
     background-color: vars.color(btn-gray);
@@ -154,7 +145,9 @@
     padding: 0;
     @include mix.pixel-border-inset(#555555, #ffffff);
 
-    &:hover { background-color: vars.color(btn-gray-hover); }
+    &:hover {
+      background-color: vars.color(btn-gray-hover);
+    }
 
     &__line {
       width: 1.125rem;
@@ -166,7 +159,7 @@
 
 // Панель mobile-меню (шторка)
 .mc-mobile-menu {
-  display: none; 
+  display: none;
 
   @include mix.respond-to('tablet') {
     display: flex;
@@ -174,14 +167,14 @@
     position: fixed;
     top: 0;
     right: 0;
-    width: 15.625rem; 
+    width: 15.625rem;
     height: 100vh;
     background-color: vars.color(bg-dark);
     border-left: 0.25rem solid vars.color(border-light);
     z-index: 999;
     padding: 1.25rem;
     box-shadow: -0.625rem 0 0 rgba(0, 0, 0, 0.4);
-    
+
     // Плавное скрытие вправо за экран
     transform: translateX(100%);
     transition: transform 0.2s ease-out;
