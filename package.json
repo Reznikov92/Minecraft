@@ -4,9 +4,9 @@
   "type": "module",
   "description": "Профессиональный адаптивный одностраничный сайт (Landing Page) для заказа и скачивания кастомных 2D/3D скинов в кубической стилистике игры **Minecraft**. Проект разработан с использованием современных стандартов фронтенд-разработки.",
   "main": "index.js",
-    "scripts": {
+  "scripts": {
     "dev": "vite",
-    "build":"tsc && vite build"
+    "build": "vite build && node scripts/copy-static-assets.mjs"
   },
   "keywords": [],
   "author": "",
