@@ -4,9 +4,9 @@
 /* ================= КОНТЕЙНЕР MAIN ================= */
 .mc-main {
   flex: 1;
-  padding: 2.5rem 5%; 
-  max-width: 75rem; 
-  margin: 0 auto; 
+  padding: 2.5rem 5%;
+  max-width: 75rem;
+  margin: 0 auto;
   width: 100%;
 }
 
@@ -22,8 +22,13 @@
     color: vars.color(accent-gold);
     line-height: 1.4;
 
-    @include mix.respond-to('mobile') { font-size: 1rem; }
-    @include mix.respond-to('small-mobile') { font-size: 0.8125rem; }
+    @include mix.respond-to('mobile') {
+      font-size: 1rem;
+    }
+
+    @include mix.respond-to('small-mobile') {
+      font-size: 0.8125rem;
+    }
   }
 }
 
@@ -59,29 +64,35 @@
       transform: translateY(-0.3125rem); // 🌟 Убран !important
       border-color: vars.color(accent-diamond); // 🌟 Убран !important
       box-shadow: 0 0.6875rem 0 vars.color(bg-dark), 0 0 0.9375rem rgba(85, 255, 255, 0.4); // 🌟 Убран !important
-      cursor: pointer; 
+      cursor: pointer;
 
-      .mc-card__name { color: vars.color(accent-gold); } // 🌟 Убран !important
+      .mc-card__name {
+        color: vars.color(accent-gold);
+      }
+
+      // 🌟 Убран !important
     }
 
-    @include mix.respond-to('small-mobile') { padding: 0.75rem; }
+    @include mix.respond-to('small-mobile') {
+      padding: 0.75rem;
+    }
 
     /* Квадратный контейнер под картинки 400x400px */
     &__preview {
       width: 100%;
-      aspect-ratio: 1 / 1; 
+      aspect-ratio: 1 / 1;
       border: 0.1875rem solid #000000; // 🌟 Убран !important
       margin-bottom: 0.9375rem;
       display: flex;
       justify-content: center;
       align-items: center;
       background-color: #1a1a1a; // 🌟 Убран !important
-      
+
       // Шахматный пиксельный фон
-      background-image: linear-gradient(45deg, #2d2d2d 25%, transparent 25%), 
-                        linear-gradient(-45deg, #2d2d2d 25%, transparent 25%), 
-                        linear-gradient(45deg, transparent 75%, #2d2d2d 75%), 
-                        linear-gradient(-45deg, transparent 75%, #2d2d2d 75%); // 🌟 Убран !important
+      background-image: linear-gradient(45deg, #2d2d2d 25%, transparent 25%),
+        linear-gradient(-45deg, #2d2d2d 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #2d2d2d 75%),
+        linear-gradient(-45deg, transparent 75%, #2d2d2d 75%); // 🌟 Убран !important
       background-size: 1.25rem 1.25rem; // 🌟 Убран !important
     }
 
@@ -90,7 +101,7 @@
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
-      image-rendering: pixelated; 
+      image-rendering: pixelated;
       image-rendering: crisp-edges;
     }
 
@@ -111,8 +122,18 @@
       border: 0.125rem solid #000;
       margin-bottom: 0.9375rem;
 
-      &--hd { background-color: vars.color(tag-hd); color: #fff; } // 🌟 Убран !important
-      &--3d { background-color: vars.color(tag-3d); color: #000; } // 🌟 Убран !important
+      &--hd {
+        background-color: vars.color(tag-hd);
+        color: #fff;
+      }
+
+      // 🌟 Убран !important
+      &--3d {
+        background-color: vars.color(tag-3d);
+        color: #000;
+      }
+
+      // 🌟 Убран !important
     }
 
     /* Пиксельная кнопка скачать */
@@ -127,8 +148,14 @@
       color: #000000; // 🌟 Убран !important
       @include mix.pixel-border-inset(#555555, #ffffff);
 
-      &:hover { background-color: vars.color(btn-gray-hover); } // 🌟 Убран !important
-      &:active { transform: translateY(0.0625rem); }
+      &:hover {
+        background-color: vars.color(btn-gray-hover);
+      }
+
+      // 🌟 Убран !important
+      &:active {
+        transform: translateY(0.0625rem);
+      }
     }
   }
 }

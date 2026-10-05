@@ -65,13 +65,17 @@ function renderSkins(): void {
       const card = document.createElement('div'); 
       card.className = 'mc-card'; 
       
+      // Безопасное формирование коммерческой ссылки с автозаполнением сообщения
+      const textMessage = `Здравствуйте! Хочу заказать скин ${skin.name}`;
+      const telegramUrl = `https://t.me{encodeURIComponent(textMessage)}`;
+
       card.innerHTML = ` 
     <div class="mc-card__preview">
         <img src="${skin.img}" alt="${skin.name}" class="mc-card__img">
     </div>
     <h3 class="mc-card__name">${skin.name}</h3>
     <span class="mc-card__tag mc-card__tag--${skin.tag}">${skin.tagText}</span>
-    <button class="mc-card__btn-download" data-file="${skin.file}">СКАЧАТЬ</button>`; 
+    <a href="${telegramUrl}" target="_blank" class="mc-card__btn-download" style="text-decoration: none; display: inline-block; width: 100%;">КУПИТЬ</a>`; 
 
       skinsGrid?.appendChild(card); 
    }
@@ -127,25 +131,11 @@ if (ctaBtn) {
    ctaBtn.addEventListener('click', playClickSound);
 }
 
-// 💾 НАДЕЖНОЕ СКАЧИВАНИЕ ФАЙЛОВ ИЗ ПАПКИ IMAGES
+// Звуковое сопровождение при клике на покупку
 skinsGrid?.addEventListener('click', (e: MouseEvent) => { 
    const target = e.target as HTMLElement; 
    if (target.classList.contains('mc-card__btn-download')) { 
       playClickSound(); 
-      
-      const fileName = target.getAttribute('data-file'); 
-      
-      if (fileName) {
-         const fileUrl = `./images/${fileName}`; 
-
-         const link = document.createElement('a'); 
-         link.href = fileUrl; 
-         link.download = fileName; 
-         
-         document.body.appendChild(link); 
-         link.click(); 
-         document.body.removeChild(link); 
-      }
    }
 });
 
