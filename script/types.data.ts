@@ -20,7 +20,6 @@ export const skinsData: Skin[] = [
     { id: 10, name: "elder guardian", tag: "3d", tagText: "3D Модель", file: "elder-guardian.png", img: "images/elder-guardian.png" },
     { id: 11, name: "mutants", tag: "hd", tagText: "HD Скин", file: "mutants.png", img: "images/mutants.png" },
     { id: 12, name: "nether knights", tag: "hd", tagText: "HD Скин", file: "nether_knights.png", img: "images/nether_knights.png" },
-    { id: 13, name: "netherite golem", tag: "3d", tagText: "3D Модель", file: "netherite-golem.png", img: "images/netherite-golem.png" },
     { id: 14, name: "netherite knights", tag: "hd", tagText: "HD Скин", file: "netherite_knights.png", img: "images/netherite_knights.png" },
     { id: 15, name: "time mage", tag: "3d", tagText: "3D Модель", file: "time-mage.png", img: "images/time-mage.png" },
     { id: 16, name: "mecha spider", tag: "3d", tagText: "3D Модель", file: "mecha-spider.png", img: "images/mecha-spider.png" },
