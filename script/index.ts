@@ -16,9 +16,19 @@ const mobileLinks = document.querySelectorAll<HTMLAnchorElement>('.mc-mobile-men
 let currentCategory: string = localStorage.getItem('selectedCategory') || 'Все скины'; 
 let searchQuery: string = localStorage.getItem('savedSearch') || ''; 
 
-if (searchInput && searchQuery) {
+if (searchInput) {
    searchInput.value = searchQuery;
 }
+
+// Сразу подсвечиваем нужную кнопку фильтра на основе данных из localStorage
+filterButtons.forEach(button => {
+   const btnText = button.textContent ? button.textContent.trim() : '';
+   if (btnText === currentCategory) { 
+      button.classList.add('mc-filter-bar__btn--active'); 
+   } else {
+      button.classList.remove('mc-filter-bar__btn--active'); 
+   }
+});
 
 // ================= 3. АУДИО ДВИЖОК =================
 const clickSound = new Audio('audio/click.mp3'); 
@@ -26,7 +36,7 @@ const clickSound = new Audio('audio/click.mp3');
 function playClickSound(): void { 
    clickSound.currentTime = 0; 
    clickSound.play().catch(err => { 
-      console.log("Ожидание клика для аудио:", err); 
+      console.warn("Браузер заблокировал автозвук до первого клика, но код продолжает работу!", err); 
    });
 }
 
@@ -46,9 +56,9 @@ function renderSkins(): void {
 
       if (currentCategory === 'Все скины') { 
          matchesCategory = true; 
-      } else if (currentCategory.includes('HD') && skin.tag === 'hd') { 
+      } else if (currentCategory === 'HD Скины' && skin.tag === 'hd') { 
          matchesCategory = true; 
-      } else if (currentCategory.includes('3D') && skin.tag === '3d') { 
+      } else if (currentCategory === '3D Модели' && skin.tag === '3d') { 
          matchesCategory = true; 
       }
 
@@ -60,25 +70,29 @@ function renderSkins(): void {
       return; 
    }
 
+   // Использование фрагмента документа для оптимизации вставок в DOM
+   const fragment = document.createDocumentFragment();
+
    for (let j = 0; j < filteredSkins.length; j++) { 
       const skin = filteredSkins[j]!; 
       const card = document.createElement('div'); 
       card.className = 'mc-card'; 
       
-      // Безопасное формирование коммерческой ссылки с автозаполнением сообщения
-      const textMessage = `Здравствуйте! Хочу заказать скин ${skin.name}`;
-      const telegramUrl = `https://t.me{encodeURIComponent(textMessage)}`;
+      // ИСПРАВЛЕНО: Кнопка теперь ведет строго на твою прямую ссылку профиля
+      const telegramUrl = `https://t.me`;
 
       card.innerHTML = ` 
     <div class="mc-card__preview">
-        <img src="${skin.img}" alt="${skin.name}" class="mc-card__img">
+        <img src="${skin.img}" alt="${skin.name}" class="mc-card__img" loading="lazy">
     </div>
     <h3 class="mc-card__name">${skin.name}</h3>
     <span class="mc-card__tag mc-card__tag--${skin.tag}">${skin.tagText}</span>
     <a href="${telegramUrl}" target="_blank" class="mc-card__btn-download" style="text-decoration: none; display: inline-block; width: 100%;">КУПИТЬ</a>`; 
 
-      skinsGrid?.appendChild(card); 
+      fragment.appendChild(card); 
    }
+
+   skinsGrid?.appendChild(fragment);
 }
 
 // ================= 5. ПОДКЛЮЧЕНИЕ ОБРАБОТЧИКОВ СОБЫТИЙ =================
@@ -99,15 +113,6 @@ filterButtons.forEach(button => {
       localStorage.setItem('selectedCategory', currentCategory); 
       renderSkins(); 
    });
-});
-
-filterButtons.forEach(button => {
-   const btnText = button.textContent ? button.textContent.trim() : '';
-   if (btnText === currentCategory) { 
-      button.classList.add('mc-filter-bar__btn--active'); 
-   } else {
-      button.classList.remove('mc-filter-bar__btn--active'); 
-   }
 });
 
 // Бургер меню логика
@@ -131,7 +136,7 @@ if (ctaBtn) {
    ctaBtn.addEventListener('click', playClickSound);
 }
 
-// Звуковое сопровождение при клике на покупку
+// Звуковое сопровождение при клике на покупку (делегирование)
 skinsGrid?.addEventListener('click', (e: MouseEvent) => { 
    const target = e.target as HTMLElement; 
    if (target.classList.contains('mc-card__btn-download')) { 
@@ -139,4 +144,5 @@ skinsGrid?.addEventListener('click', (e: MouseEvent) => {
    }
 });
 
+// Стартовый запуск отрисовки
 renderSkins();
