@@ -23,6 +23,20 @@
     box-shadow: inset 0.125rem 0.125rem 0 vars.color(bg-dark);
 
     &:focus { border-color: vars.color(text-white); }
+
+    /* 📱 АДАПТАЦИЯ ДЛЯ ОБЫЧНЫХ СМАРТФОНОВ (< 600px) */
+    @include mix.respond-to('mobile') {
+      padding: 0.625rem 0.5rem; 
+      font-size: 0.5rem; /* Уменьшаем шрифт */
+    }
+
+    /* 📱 ДЛЯ КОМПАКТНЫХ СМАРТФОНОВ ТИПА 320px (< 400px) */
+    @include mix.respond-to('small-mobile') {
+      /* Максимально зажимаем шрифт и уплотняем пиксели, чтобы строка влезла полностью */
+      font-size: 0.375rem; 
+      padding: 0.5rem 0.25rem;
+      letter-spacing: -0.03rem; 
+    }
   }
 
   &__buttons {
