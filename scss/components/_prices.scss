@@ -2,17 +2,20 @@
 @use '../abstract/mixins' as mix;
 
 .prices-section {
-  padding-top: 1.875rem; 
+  padding-top: 1.875rem;
   margin-bottom: 1.875rem;
 
   &__title {
-    font-size: 0.9375rem; 
+    /* 🌟 ИСПРАВЛЕНО: Слегка увеличили заголовок секции цен */
+    font-size: 1.1rem;
     text-align: center;
-    margin-bottom: 1.25rem; 
+    margin-bottom: 1.25rem;
     text-shadow: 0.125rem 0.125rem 0 #000000;
     color: vars.color(accent-diamond);
 
-    @include mix.respond-to('small-mobile') { font-size: 0.75rem; }
+    @include mix.respond-to('small-mobile') {
+      font-size: 0.9rem;
+    }
   }
 
   &__table-container {
@@ -32,43 +35,58 @@
   }
 
   &__info-item {
-    font-size: 0.5rem; 
+    /* 🌟 ИСПРАВЛЕНО: Увеличили размер информационного текста для хорошей читаемости */
+    font-size: 0.65rem;
     color: vars.color(text-gray);
     line-height: 1.8;
     margin-bottom: 0.375rem;
     text-shadow: 0.0625rem 0.0625rem 0 #000;
 
-    @include mix.respond-to('small-mobile') { font-size: 0.4375rem; }
+    @include mix.respond-to('small-mobile') {
+      font-size: 0.55rem;
+    }
   }
 }
 
 .mc-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.5625rem; 
+  /* 🌟 ИСПРАВЛЕНО: Сделали базовый шрифт таблицы крупнее и разборчивее */
+  font-size: 0.7rem;
   text-align: left;
-  min-width: 34.375rem; 
+  min-width: 34.375rem;
 
   &__row {
     border-bottom: 0.0625rem solid vars.color(border-light);
 
-    &:nth-child(even) { background-color: vars.color(bg-table-alt); }
-    &--header { background-color: #1a1a1a; color: vars.color(accent-gold); }
-    
-    // 🌟 Усиливаем селектор цены через строку-родителя! Код стал чистым!
-    .mc-table__cell--price { 
-      color: vars.color(accent-emerald); 
+    &:nth-child(even) {
+      background-color: vars.color(bg-table-alt);
+    }
+
+    &--header {
+      background-color: #1a1a1a;
+      color: vars.color(accent-gold);
+    }
+
+    .mc-table__cell--price {
+      color: vars.color(accent-emerald);
     }
   }
 
   &__cell {
-    padding: 0.625rem; 
+    padding: 0.625rem;
     border: 0.125rem solid vars.color(border-light);
     color: vars.color(text-white);
 
-    &--th { color: vars.color(accent-gold); }
-    // Строчку &--price { ... !important } отсюда полностью удалили!
+    &--th {
+      color: vars.color(accent-gold);
+    }
 
-    @include mix.respond-to('small-mobile') { padding: 0.375rem; font-size: 0.4375rem; }
+    /* 📱 АДАПТАЦИЯ ДЛЯ СМАРТФОНОВ */
+    @include mix.respond-to('small-mobile') {
+      padding: 0.5rem 0.375rem;
+      /* 🌟 ИСПРАВЛЕНО: Шрифт в таблице на мобилках больше не сливается */
+      font-size: 0.55rem;
+    }
   }
 }

@@ -4,9 +4,10 @@
 .mc-footer {
   background-color: vars.color(bg-dark);
   border-top: 0.25rem solid vars.color(border-light);
-  padding: 1.5625rem 0.9375rem; 
+  padding: 1.5625rem 0.9375rem;
   text-align: center;
-  font-size: 0.5rem; 
+  /* 🌟 ИСПРАВЛЕНО: Увеличили базовый размер текста подвала для читаемости */
+  font-size: 0.65rem;
   color: vars.color(text-muted);
   line-height: 1.8;
   margin-top: auto;
@@ -18,7 +19,8 @@
   }
 
   &__contacts-title {
-    font-size: 0.5625rem; 
+    /* 🌟 ИСПРАВЛЕНО: Сделали заголовок контактов крупным и заметным */
+    font-size: 0.75rem;
     color: vars.color(accent-gold);
     margin-bottom: 0.75rem;
     text-shadow: 0.0625rem 0.0625rem 0 #000;
@@ -32,7 +34,8 @@
   }
 
   &__contact-item {
-    font-size: 0.5rem; 
+    /* 🌟 ИСПРАВЛЕНО: Текст внутри кнопок соцсетей теперь легко читается */
+    font-size: 0.65rem;
     color: vars.color(text-white);
     text-decoration: none;
     background-color: vars.color(bg-ui);
@@ -40,18 +43,50 @@
     padding: 0.625rem;
     box-shadow: 0 0.25rem 0 #000000;
     flex-grow: 1;
-    max-width: 16.25rem; 
+    max-width: 16.25rem;
     text-align: center;
 
-    &:hover { background-color: #3a3a3a; border-color: vars.color(text-white); }
-    &--tg:hover { color: vars.color(accent-diamond); }
-    &--ds:hover { color: #5555ff; }
-    &--tw:hover { color: #1da1f2; }
+    &:hover {
+      background-color: #3a3a3a;
+      border-color: vars.color(text-white);
+    }
 
-    @include mix.respond-to('small-mobile') { width: 100%; max-width: 100%; font-size: 0.4375rem; }
+    &--tg:hover {
+      color: vars.color(accent-diamond);
+    }
+
+    &--ds:hover {
+      color: #5555ff;
+    }
+
+    &--tw:hover {
+      color: #1da1f2;
+    }
+
+    /* 📱 АДАПТАЦИЯ ДЛЯ МОБИЛОК (< 400px) */
+    @include mix.respond-to('small-mobile') {
+      width: 100%;
+      max-width: 100%;
+      /* 🌟 ИСПРАВЛЕНО: Шрифт больше не превращается в нечитаемую кашу на 320px */
+      font-size: 0.55rem;
+    }
   }
 
-  &__disclaimer { margin-top: 0.625rem; color: #555555; }
-  &__links { margin-top: 0.625rem; }
-  &__link { color: vars.color(text-gray); text-decoration: none; &:hover { color: vars.color(text-white); } }
+  &__disclaimer {
+    margin-top: 0.625rem;
+    color: #555555;
+  }
+
+  &__links {
+    margin-top: 0.625rem;
+  }
+
+  &__link {
+    color: vars.color(text-gray);
+    text-decoration: none;
+
+    &:hover {
+      color: vars.color(text-white);
+    }
+  }
 }

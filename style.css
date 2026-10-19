@@ -1,11 +1,21 @@
 @charset "UTF-8";
+/* ================= ФИНАЛЬНАЯ НЕОНОВАЯ РАМКА ПО ЦВЕТАМ КЛИЕНТА ================= */
+/* ================= 1. ПОДКЛЮЧЕНИЕ ШРИФТОВ ================= */
+@font-face {
+  font-family: "Minecraft";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/Minecraft.ttf") format("truetype");
+}
 @font-face {
   font-family: "Press Start 2P";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("./fonts/PressStart2P-Regular.ttf") format("truetype");
+  src: url("../fonts/PressStart2P-Regular.ttf") format("truetype");
 }
+/* ================= 2. ГЛОБАЛЬНЫЙ СБРОС И МАСШТАБ ================= */
 * {
   margin: 0;
   padding: 0;
@@ -14,12 +24,12 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 125%;
+  font-size: 130%;
 }
 
 .page__body {
   background-color: #333333;
-  font-family: "Press Start 2P", cursive;
+  font-family: "Minecraft", "Press Start 2P", cursive;
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -57,9 +67,11 @@ html {
   }
 }
 .mc-header__nickname {
-  font-size: 0.625rem;
+  font-size: 0.8rem;
   text-shadow: 0.125rem 0.125rem 0 #3f3f3f;
   white-space: nowrap;
+  /* 🌟 ИСПРАВЛЕНО: Опускаем никнейм на общую линию */
+  padding-top: 0.25rem;
 }
 @media (max-width: 62rem) {
   .mc-header__nickname {
@@ -71,7 +83,7 @@ html {
 }
 .mc-header__nav {
   display: flex;
-  gap: 0.3125rem;
+  gap: 0.5rem;
   align-items: center;
 }
 @media (max-width: 62rem) {
@@ -82,12 +94,15 @@ html {
 .mc-header__nav-link {
   color: #aaaaaa;
   text-decoration: none;
-  font-size: 0.5625rem;
-  padding: 0.5rem 0.625rem;
+  font-size: 0.75rem;
   border: 0.125rem solid transparent;
   white-space: nowrap;
+  /* 🌟 ИСПРАВЛЕНО: Задаем фиксированную высоту ссылкам меню и опускаем текст ровно по центру */
   display: flex;
   align-items: center;
+  height: 2rem;
+  padding: 0.25rem 0.75rem 0 0.75rem;
+  gap: 0.35rem;
 }
 .mc-header__nav-link:hover {
   color: #ffffff;
@@ -121,16 +136,22 @@ html {
 
 /* Пиксельная зеленая кнопка "Заказать" */
 .mc-btn-cta {
-  font-family: "Press Start 2P", cursive;
-  font-size: 0.5625rem;
+  font-family: "Minecraft", "Press Start 2P", cursive;
+  font-size: 0.7rem;
   color: #ffffff;
   background-color: #5c8e32;
   border: 0.125rem solid #000;
-  padding: 0.5rem 0.75rem;
   cursor: pointer;
   text-align: center;
   white-space: nowrap;
   text-decoration: none;
+  /* 🌟 ИСПРАВЛЕНО: Выравниваем зеленую кнопку под новый рельеф букв */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2rem;
+  padding: 0.1rem 0.85rem 0 0.85rem;
+  box-sizing: border-box;
   box-shadow: inset -0.1875rem -0.1875rem 0 #3b5c20, inset 0.1875rem 0.1875rem 0 #7cae4f;
 }
 .mc-btn-cta:hover {
@@ -142,12 +163,13 @@ html {
 }
 @media (max-width: 62rem) {
   .mc-btn-cta {
-    font-size: 0.5rem;
-    padding: 0.375rem 0.5rem;
+    font-size: 0.6rem;
+    height: 1.8rem;
+    line-height: 1.5rem;
+    padding: 0.15rem 0.65rem 0 0.65rem;
   }
 }
 
-/* ================= МОБИЛЬНЫЕ СТИЛИ (БУРГЕР И ШТОРКА) ================= */
 .mc-burger {
   display: none;
 }
@@ -169,11 +191,11 @@ html {
   .mc-burger:hover {
     background-color: #d5d5d5;
   }
-  .mc-burger__line {
-    width: 1.125rem;
-    height: 0.1875rem;
-    background-color: #000000;
-  }
+}
+.mc-burger__line {
+  width: 1.125rem;
+  height: 0.1875rem;
+  background-color: #000000;
 }
 
 .mc-mobile-menu {
@@ -213,12 +235,13 @@ html {
     gap: 1.25rem;
   }
   .mc-mobile-menu__link {
-    font-family: "Press Start 2P", cursive;
-    font-size: 0.625rem;
+    font-family: "Minecraft", "Press Start 2P", cursive;
+    font-size: 0.75rem;
     color: #ffffff;
     text-decoration: none;
     padding: 0.625rem;
     border: 0.125rem solid transparent;
+    line-height: 1;
   }
   .mc-mobile-menu__link:hover {
     color: #55ffff;
@@ -238,8 +261,8 @@ html {
   box-shadow: 0 0.375rem 0 #121212;
 }
 .mc-filter-bar__input {
-  font-family: "Press Start 2P", cursive;
-  font-size: 0.625rem;
+  font-family: "Minecraft", "Press Start 2P", cursive;
+  font-size: 0.75rem;
   width: 100%;
   padding: 0.75rem;
   background-color: #000000;
@@ -251,9 +274,15 @@ html {
 .mc-filter-bar__input:focus {
   border-color: #ffffff;
 }
+@media (max-width: 37.5rem) {
+  .mc-filter-bar__input {
+    padding: 0.625rem 0.5rem;
+    font-size: 0.65rem;
+  }
+}
 .mc-filter-bar__buttons {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.75rem;
   flex-wrap: wrap;
 }
 @media (max-width: 25rem) {
@@ -272,15 +301,20 @@ html {
   }
 }
 .mc-filter-bar__btn {
-  font-family: "Press Start 2P", cursive;
-  font-size: 0.5rem;
-  padding: 0.5rem 0.625rem;
+  font-family: "Minecraft", "Press Start 2P", cursive;
+  font-size: 0.7rem;
   background-color: #c6c6c6;
   border: 0.125rem solid #000;
   cursor: pointer;
   color: #000000;
   flex-grow: 1;
   text-align: center;
+  /* 🌟 ИСПРАВЛЕНО: Слегка приподнимаем текст наверх, уменьшая верхний padding до 0.1rem и увеличивая line-height до 2.4rem */
+  display: block;
+  height: 2.5rem;
+  line-height: 2.15rem;
+  padding: 0 1rem 0 1rem;
+  box-sizing: border-box;
   box-shadow: inset -0.1875rem -0.1875rem 0 #555555, inset 0.1875rem 0.1875rem 0 #ffffff;
 }
 .mc-filter-bar__btn:hover {
@@ -295,7 +329,11 @@ html {
   .mc-filter-bar__btn {
     flex-shrink: 0;
     flex-grow: 0;
-    font-size: 0.4375rem;
+    font-size: 0.6rem;
+    height: 2.2rem;
+    /* 🌟 ИСПРАВЛЕНО: Корректируем мобильную высоту строк */
+    line-height: 2.1rem;
+    padding: 0.1rem 0.75rem 0 0.75rem;
   }
 }
 
@@ -314,7 +352,8 @@ html {
   margin-bottom: 1.875rem;
 }
 .hero-section__title {
-  font-size: 1.375rem;
+  /* 🌟 ИСПРАВЛЕНО: Увеличили главный заголовок для читаемости */
+  font-size: 1.6rem;
   margin-bottom: 0.75rem;
   text-shadow: 0.1875rem 0.1875rem 0 #000000;
   color: #ffcc00;
@@ -322,12 +361,12 @@ html {
 }
 @media (max-width: 37.5rem) {
   .hero-section__title {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 }
 @media (max-width: 25rem) {
   .hero-section__title {
-    font-size: 0.8125rem;
+    font-size: 1rem;
   }
 }
 
@@ -345,13 +384,15 @@ html {
   }
 }
 .skins-grid {
-  /* ================= СТИЛИ КАРТОЧЕК (УСИЛЕНЫ ЧЕРЕЗ РОДИТЕЛЯ) ================= */
+  /* ================= СТИЛИ КАРТОЧЕК ================= */
 }
 .skins-grid .mc-card {
   background-color: #212121;
   border: 0.25rem solid #4a4a4a;
   box-shadow: 0 0.375rem 0 #121212;
   padding: 0.9375rem;
+  /* 🌟 ИСПРАВЛЕНО: Добавлен гармоничный нижний отступ, так как кнопки больше нет */
+  padding-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -372,6 +413,7 @@ html {
 @media (max-width: 25rem) {
   .skins-grid .mc-card {
     padding: 0.75rem;
+    padding-bottom: 1.25rem;
   }
 }
 .skins-grid .mc-card {
@@ -399,51 +441,20 @@ html {
   image-rendering: pixelated;
   image-rendering: crisp-edges;
 }
+.skins-grid .mc-card {
+  /* Название скина (теперь финальный элемент карточки) */
+}
 .skins-grid .mc-card__name {
-  font-size: 0.625rem;
-  margin-bottom: 0.625rem;
-  min-height: 1.875rem;
+  /* 🌟 ИСПРАВЛЕНО: Увеличили размер шрифта под буквы Minecraft */
+  font-size: 0.75rem;
+  /* Убран лишний отступ снизу и зафиксирована высота, чтобы текст стоял ровно */
+  margin-bottom: 0;
+  min-height: 1.25rem;
   display: flex;
   align-items: center;
+  justify-content: center;
   color: #ffffff;
   transition: color 0.2s ease-out;
-}
-.skins-grid .mc-card {
-  /* Вкладки типов (HD и 3D) */
-}
-.skins-grid .mc-card__tag {
-  font-size: 0.5rem;
-  padding: 0.25rem 0.375rem;
-  border: 0.125rem solid #000;
-  margin-bottom: 0.9375rem;
-}
-.skins-grid .mc-card__tag--hd {
-  background-color: #aa00aa;
-  color: #fff;
-}
-.skins-grid .mc-card__tag--3d {
-  background-color: #33ff33;
-  color: #000;
-}
-.skins-grid .mc-card {
-  /* Пиксельная кнопка скачать */
-}
-.skins-grid .mc-card__btn-download {
-  font-family: "Press Start 2P", cursive;
-  font-size: 0.5625rem;
-  width: 100%;
-  padding: 0.5rem;
-  background-color: #c6c6c6;
-  border: 0.125rem solid #000;
-  cursor: pointer;
-  color: #000000;
-  box-shadow: inset -0.1875rem -0.1875rem 0 #555555, inset 0.1875rem 0.1875rem 0 #ffffff;
-}
-.skins-grid .mc-card__btn-download:hover {
-  background-color: #d5d5d5;
-}
-.skins-grid .mc-card__btn-download:active {
-  transform: translateY(0.0625rem);
 }
 
 .prices-section {
@@ -451,7 +462,8 @@ html {
   margin-bottom: 1.875rem;
 }
 .prices-section__title {
-  font-size: 0.9375rem;
+  /* 🌟 ИСПРАВЛЕНО: Слегка увеличили заголовок секции цен */
+  font-size: 1.1rem;
   text-align: center;
   margin-bottom: 1.25rem;
   text-shadow: 0.125rem 0.125rem 0 #000000;
@@ -459,7 +471,7 @@ html {
 }
 @media (max-width: 25rem) {
   .prices-section__title {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
   }
 }
 .prices-section__table-container {
@@ -477,7 +489,8 @@ html {
   box-shadow: inset 0.125rem 0.125rem 0 #000;
 }
 .prices-section__info-item {
-  font-size: 0.5rem;
+  /* 🌟 ИСПРАВЛЕНО: Увеличили размер информационного текста для хорошей читаемости */
+  font-size: 0.65rem;
   color: #aaaaaa;
   line-height: 1.8;
   margin-bottom: 0.375rem;
@@ -485,14 +498,15 @@ html {
 }
 @media (max-width: 25rem) {
   .prices-section__info-item {
-    font-size: 0.4375rem;
+    font-size: 0.55rem;
   }
 }
 
 .mc-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.5625rem;
+  /* 🌟 ИСПРАВЛЕНО: Сделали базовый шрифт таблицы крупнее и разборчивее */
+  font-size: 0.7rem;
   text-align: left;
   min-width: 34.375rem;
 }
@@ -517,10 +531,14 @@ html {
 .mc-table__cell--th {
   color: #ffcc00;
 }
+.mc-table__cell {
+  /* 📱 АДАПТАЦИЯ ДЛЯ СМАРТФОНОВ */
+}
 @media (max-width: 25rem) {
   .mc-table__cell {
-    padding: 0.375rem;
-    font-size: 0.4375rem;
+    padding: 0.5rem 0.375rem;
+    /* 🌟 ИСПРАВЛЕНО: Шрифт в таблице на мобилках больше не сливается */
+    font-size: 0.55rem;
   }
 }
 
@@ -529,7 +547,8 @@ html {
   border-top: 0.25rem solid #4a4a4a;
   padding: 1.5625rem 0.9375rem;
   text-align: center;
-  font-size: 0.5rem;
+  /* 🌟 ИСПРАВЛЕНО: Увеличили базовый размер текста подвала для читаемости */
+  font-size: 0.65rem;
   color: #777777;
   line-height: 1.8;
   margin-top: auto;
@@ -540,7 +559,8 @@ html {
   border-bottom: 0.125rem dashed #4a4a4a;
 }
 .mc-footer__contacts-title {
-  font-size: 0.5625rem;
+  /* 🌟 ИСПРАВЛЕНО: Сделали заголовок контактов крупным и заметным */
+  font-size: 0.75rem;
   color: #ffcc00;
   margin-bottom: 0.75rem;
   text-shadow: 0.0625rem 0.0625rem 0 #000;
@@ -552,7 +572,8 @@ html {
   flex-wrap: wrap;
 }
 .mc-footer__contact-item {
-  font-size: 0.5rem;
+  /* 🌟 ИСПРАВЛЕНО: Текст внутри кнопок соцсетей теперь легко читается */
+  font-size: 0.65rem;
   color: #ffffff;
   text-decoration: none;
   background-color: #212121;
@@ -576,11 +597,15 @@ html {
 .mc-footer__contact-item--tw:hover {
   color: #1da1f2;
 }
+.mc-footer__contact-item {
+  /* 📱 АДАПТАЦИЯ ДЛЯ МОБИЛОК (< 400px) */
+}
 @media (max-width: 25rem) {
   .mc-footer__contact-item {
     width: 100%;
     max-width: 100%;
-    font-size: 0.4375rem;
+    /* 🌟 ИСПРАВЛЕНО: Шрифт больше не превращается в нечитаемую кашу на 320px */
+    font-size: 0.55rem;
   }
 }
 .mc-footer__disclaimer {

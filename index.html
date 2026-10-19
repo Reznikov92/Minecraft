@@ -7,8 +7,8 @@
   <title>Мастерская Скинов</title>
   <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 
-  <!-- Подключение локального скомпилированного CSS (шрифт Press Start 2P уже внутри) -->
-  <link rel="stylesheet" href="./style.css">
+  <!-- 🌟 ИСПРАВЛЕНО: Теперь стили ведут напрямую в SCSS. Vite сам всё скомпилирует, и шрифты встанут ровно -->
+  <link rel="stylesheet" href="./scss/style.scss">
 </head>
 
 <body class="page__body">
@@ -19,7 +19,6 @@
       <img src="./images/logo.png" alt="Мастерская скинов NightLxrd" class="mc-header__logo-img">
       <span class="mc-header__nickname">NightLxrd</span>
     </div>
-
 
     <!-- Горизонтальная навигация для больших экранов -->
     <nav class="mc-header__nav">
@@ -63,7 +62,7 @@
       <!-- Панель фильтров и живого поиска -->
       <section class="mc-filter-bar">
         <div class="mc-filter-bar__search-block">
-          <input type="text" placeholder="Поиск скина по названию..." class="mc-filter-bar__input">
+          <input type="text" placeholder="Поиск скина ..." class="mc-filter-bar__input">
         </div>
         <div class="mc-filter-bar__buttons">
           <button class="mc-filter-bar__btn mc-filter-bar__btn--active">Все скины</button>
@@ -82,19 +81,10 @@
     <div class="mc-footer__contacts">
       <p class="mc-footer__contacts-title">НАШИ КОНТАКТЫ:</p>
       <div class="mc-footer__contacts-grid">
-        <!-- Добавлено t.me/ для Телеграма -->
-        <a href="https://t.me/nightlxrd" target="_blank" class="mc-footer__contact-item mc-footer__contact-item--tg">✈️ Telegram:
-          @nightlxrd</a>
-
-        <!-- Добавлено ://discord.com для Дискорда -->
-        <a href="https://://discord.com/night.lxrd" target="_blank"
-          class="mc-footer__contact-item mc-footer__contact-item--ds">💬 Discord: @night.lxrd</a>
-
-        <!-- Добавлено ://x.com для Твиттера -->
-        <a href="https://x.com/lxrd_night" target="_blank"
-          class="mc-footer__contact-item mc-footer__contact-item--tw">🐦 X (Twitter): @lxrd_night</a>
+        <a href="https://t.me" target="_blank" class="mc-footer__contact-item mc-footer__contact-item--tg">✈️ Telegram: @nightlxrd</a>
+        <a href="https://discord.com" target="_blank" class="mc-footer__contact-item mc-footer__contact-item--ds">💬 Discord: @night.lxrd</a>
+        <a href="https://x.com" target="_blank" class="mc-footer__contact-item mc-footer__contact-item--tw">🐦 X (Twitter): @lxrd_night</a>
       </div>
-
     </div>
     <p class="mc-footer__text">© 2026 NightLxrd. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</p>
     <p class="mc-footer__disclaimer">NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG.</p>
@@ -105,3 +95,4 @@
 
   <script type="module" src="/script/index.ts"></script>
 </body>
+</html>
