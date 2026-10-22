@@ -46,7 +46,7 @@
 
   /* ================= СТИЛИ КАРТОЧЕК ================= */
   .mc-card {
-    position: relative;
+    position: relative; 
     background-color: vars.color(bg-ui);
     padding: 0.9375rem;
     padding-bottom: 1.5rem;
@@ -55,11 +55,11 @@
     align-items: center;
     text-align: center;
     width: 100%;
-
+    
     // 🌟 ИСПРАВЛЕНО: Вместо серого бордера теперь всегда горит КРАСНАЯ РАМКА клиента
     @include mix.pixel-red-frame;
-
-    transition: transform 0.2s ease-out;
+    
+    transition: transform 0.2s ease-out; 
 
     /* 🌟 ЭФФЕКТ НАВЕДЕНИЯ (ФИОЛЕТОВЫЙ НЕОН НЕ ТРОГАЕМ) */
     &:hover {
@@ -72,7 +72,7 @@
       }
 
       .mc-card__name {
-        color: vars.color(accent-diamond);
+        color: vars.color(accent-diamond); 
       }
     }
 
@@ -81,7 +81,7 @@
       padding-bottom: 1.25rem;
     }
 
-    /* Контейнер под картинки со встроенной темной сеткой */
+    /* Квадратный контейнер под картинки 400x400px */
     &__preview {
       width: 100%;
       aspect-ratio: 1 / 1;
@@ -90,17 +90,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      background-color: #1a1a1a;
 
-      // 🌟 ВОТ ЭТИ 5 СТРОК ИЗМЕНЕНЫ:
-      background-color: #050101; // Глубокий темный фон окошка
-      background-image:
-        radial-gradient(vars.color(grid-line-card) 0.0625rem, transparent 0.0625rem), // Бордовые точки на пересечениях
-        linear-gradient(to right, rgba(122, 11, 20, 0.3) 0.0625rem, transparent 0.0625rem), // Вертикальные линии
-        linear-gradient(to bottom, rgba(122, 11, 20, 0.3) 0.0625rem, transparent 0.0625rem); // Горизонтальные линии
-      background-size: 1rem 1rem; // Шаг пиксельной сетки (размер квадратов)
-      background-position: -0.0313rem -0.0313rem, 0 0, 0 0; // Центрирование точек ровно на перекрестия
+      background-image: linear-gradient(45deg, #2d2d2d 25%, transparent 25%),
+        linear-gradient(-45deg, #2d2d2d 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #2d2d2d 75%),
+        linear-gradient(-45deg, transparent 75%, #2d2d2d 75%);
+      background-size: 1.25rem 1.25rem;
     }
-
 
     /* Рендеринг пикселей без размытия */
     &__img {
