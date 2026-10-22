@@ -22,9 +22,18 @@ $colors: (
   tag-hd: #aa00aa,
   tag-classic: #00aa00,
   tag-alex: #df691a,
-  tag-3d: #33ff33
+  tag-3d: #33ff33,
+  
+  // 🌟 НОВЫЕ ЦВЕТА ДЛЯ СЕТКИ КЛИЕНТА
+  bg-grid-dark: #0b0203,
+  grid-line: #5a080f,
+  grid-line-card: #7a0b14
 );
 
 @function color($key) {
-  @return map.get($colors, $key); 
+  @if map.has-key($colors, $key) {
+    @return map.get($colors, $key);
+  }
+  @error "Цвет '#{$key}' не найден в карте $colors!";
+  @return null;
 }
