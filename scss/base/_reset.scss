@@ -6,7 +6,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('../fonts/Minecraft.ttf') format('truetype');
+  src: url('../Minecraft.woff2') format('woff2');
 }
 
 /* ================= 2. ГЛОБАЛЬНЫЙ СБРОС И МАСШТАБ ================= */
@@ -21,7 +21,7 @@ html {
   font-size: 130%;
   
   // Улучшаем отображение пиксельных шрифтов
-  font-smooth: never;
+  // font-smooth: never;
   -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: none;
   text-rendering: optimizeSpeed;

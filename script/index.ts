@@ -2,7 +2,6 @@ import { skinsData, type Skin } from './types.data.ts';
 
 // ================= 1. НАХОДИМ ЭЛЕМЕНТЫ (DOM) =================
 const skinsGrid = document.querySelector<HTMLElement>('.skins-grid');
-const searchInput = document.querySelector<HTMLInputElement>(".mc-filter-bar__input");
 const filterButtons = document.querySelectorAll<HTMLButtonElement>(".mc-filter-bar__btn");
 const ctaBtn = document.querySelector<HTMLButtonElement>('.mc-btn-cta');
 
@@ -14,28 +13,6 @@ const mobileLinks = document.querySelectorAll<HTMLAnchorElement>('.mc-mobile-men
 
 // ================= 2. СИНХРОНИЗАЦИЯ LOCALSTORAGE =================
 let currentCategory: string = localStorage.getItem('selectedCategory') || 'Все скины';
-let searchQuery: string = localStorage.getItem('savedSearch') || '';
-
-if (searchInput) {
-   searchInput.value = searchQuery;
-
-   /* 🌟 ИСПРАВЛЕНИЕ: Если ширина экрана смартфона меньше или равна 480px, 
-      меняем длинный текст на короткий "Поиск скина...", чтобы он не обрезался */
-   if (window.innerWidth <= 480) {
-      searchInput.placeholder = "Поиск скина...";
-   }
-}
-
-// Сразу подсвечиваем нужную кнопку фильтра на основе данных из localStorage
-filterButtons.forEach(button => {
-   const btnText = button.textContent ? button.textContent.trim() : '';
-   if (btnText === currentCategory) {
-      button.classList.add('mc-filter-bar__btn--active');
-   } else {
-      button.classList.remove('mc-filter-bar__btn--active');
-   }
-});
-
 
 // Сразу подсвечиваем нужную кнопку фильтра на основе данных из localStorage
 filterButtons.forEach(button => {
@@ -51,6 +28,7 @@ filterButtons.forEach(button => {
 const clickSound = new Audio('audio/click.mp3');
 
 function playClickSound(): void {
+   clickSound.pause();
    clickSound.currentTime = 0;
    clickSound.play().catch(err => {
       console.warn("Браузер заблокировал автозвук до первого клика, но код продолжает работу!", err);
@@ -66,9 +44,6 @@ function renderSkins(): void {
    }
 
    const filteredSkins = skinsData.filter((skin) => {
-      const query = searchQuery.toLowerCase().trim();
-      const matchesSearch = skin.name.toLowerCase().includes(query);
-
       let matchesCategory = false;
 
       if (currentCategory === 'Все скины') {
@@ -79,7 +54,7 @@ function renderSkins(): void {
          matchesCategory = true;
       }
 
-      return matchesSearch && matchesCategory;
+      return matchesCategory;
    });
 
    if (filteredSkins.length === 0 && skinsGrid) {
@@ -87,7 +62,6 @@ function renderSkins(): void {
       return;
    }
 
-   // Использование фрагмента документа для оптимизации вставок в DOM
    const fragment = document.createDocumentFragment();
 
    for (let j = 0; j < filteredSkins.length; j++) {
@@ -95,7 +69,6 @@ function renderSkins(): void {
       const card = document.createElement('div');
       card.className = 'mc-card';
 
-      // ЧИСТЫЙ ШАБЛОН: Строки со спаном <span class="mc-card__tag">...</span> и кнопкой <a class="mc-card__btn-download">...</a> КУПИТЬ УДАЛЕНЫ ПОЛНОСТЬЮ!
       card.innerHTML = ` 
     <div class="mc-card__preview">
         <img src="${skin.img}" alt="${skin.name}" class="mc-card__img" loading="lazy">
@@ -109,12 +82,6 @@ function renderSkins(): void {
 }
 
 // ================= 5. ПОДКЛЮЧЕНИЕ ОБРАБОТЧИКОВ СОБЫТИЙ =================
-
-searchInput?.addEventListener('input', (e: Event) => {
-   searchQuery = (e.target as HTMLInputElement).value;
-   localStorage.setItem('savedSearch', searchQuery);
-   renderSkins();
-});
 
 filterButtons.forEach(button => {
    button.addEventListener('click', () => {
@@ -149,10 +116,10 @@ if (ctaBtn) {
    ctaBtn.addEventListener('click', playClickSound);
 }
 
-// Звуковое сопровождение при клике (делегирование)
+// Звук клика по карточкам
 skinsGrid?.addEventListener('click', (e: MouseEvent) => {
    const target = e.target as HTMLElement;
-   if (target.classList.contains('mc-card__btn-download')) {
+   if (target.closest('.mc-card')) {
       playClickSound();
    }
 });

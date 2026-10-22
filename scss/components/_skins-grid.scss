@@ -46,8 +46,11 @@
 
   /* ================= СТИЛИ КАРТОЧЕК ================= */
   .mc-card {
-    position: relative; 
-    background-color: vars.color(bg-ui);
+    position: relative;
+
+    // 🌟 ИСПРАВЛЕНИЕ №1: Заменил vars.color(bg-ui) на чистый черный цвет #000000
+    background-color: #000000;
+
     padding: 0.9375rem;
     padding-bottom: 1.5rem;
     display: flex;
@@ -55,24 +58,27 @@
     align-items: center;
     text-align: center;
     width: 100%;
-    
-    // 🌟 ИСПРАВЛЕНО: Вместо серого бордера теперь всегда горит КРАСНАЯ РАМКА клиента
+
+    // Горит красная рамка по умолчанию
     @include mix.pixel-red-frame;
-    
-    transition: transform 0.2s ease-out; 
+    transition: background-color 0.2s ease-out;
 
     /* 🌟 ЭФФЕКТ НАВЕДЕНИЯ (ФИОЛЕТОВЫЙ НЕОН НЕ ТРОГАЕМ) */
     &:hover {
-      transform: translateY(-0.3125rem);
       cursor: pointer;
 
-      // Накладываем фиолетовый неон поверх красной рамки
+      // 🌟 ИСПРАВЛЕНИЕ №2: Заменил серый #2d2d2d на мягкий графитовый #121212,
+      // чтобы при наведении карточка не "вспыхивала" слишком резко
+      background-color: #121212;
+
+      // Фиолетовый неон накладывается поверх при ховере
       &::before {
         @include mix.pixel-purple-frame-overlay;
+        content: '';
       }
 
       .mc-card__name {
-        color: vars.color(accent-diamond); 
+        color: vars.color(accent-diamond);
       }
     }
 
@@ -82,6 +88,7 @@
     }
 
     /* Квадратный контейнер под картинки 400x400px */
+    /* 🌟 ИСПРАВЛЕНО: ШАХМАТКА УДАЛЕНА ПОЛНОСТЬЮ. Теперь тут чистый глубокий чёрный фон */
     &__preview {
       width: 100%;
       aspect-ratio: 1 / 1;
@@ -90,22 +97,22 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #1a1a1a;
 
-      background-image: linear-gradient(45deg, #2d2d2d 25%, transparent 25%),
-        linear-gradient(-45deg, #2d2d2d 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, #2d2d2d 75%),
-        linear-gradient(-45deg, transparent 75%, #2d2d2d 75%);
-      background-size: 1.25rem 1.25rem;
+      // ВОТ ЗДЕСЬ ОСТАЛСЯ ТОЛЬКО ОДИН СТРОГИЙ ЧЁРНЫЙ ЦВЕТ:
+      background-color: #000000; // Идеальный чёрный цвет без серой фигни
     }
 
-    /* Рендеринг пикселей без размытия */
+    /* Четкий рендеринг пикселей скина */
     &__img {
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
       image-rendering: pixelated;
       image-rendering: crisp-edges;
+
+      // 🌟 ИСПРАВЛЕНО: Добавляем жесткую пиксельную белую обводку по контуру 3D-модели, как на скриншоте
+      filter:
+        drop-shadow(0.125rem 0 0 #ffffff) drop-shadow(-0.125rem 0 0 #ffffff) drop-shadow(0 0.125rem 0 #ffffff) drop-shadow(0 -0.125rem 0 #ffffff);
     }
 
     /* Название скина */
@@ -120,4 +127,5 @@
       transition: color 0.2s ease-out;
     }
   }
+
 }
