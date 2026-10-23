@@ -7,9 +7,9 @@
   <title>Мастерская Скинов</title>
   <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 
-  <!-- Подключение локального скомпилированного CSS (шрифт Press Start 2P уже внутри) -->
-  <script type="module" crossorigin src="/assets/index-Bol_ngXg.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-Bhv0FdC6.css">
+  <!-- 🌟 ИСПРАВЛЕНО: Теперь стили ведут напрямую в SCSS. Vite сам всё скомпилирует, и шрифты встанут ровно -->
+  <script type="module" crossorigin src="/Minecraft/assets/index-B7q9EHvm.js"></script>
+  <link rel="stylesheet" crossorigin href="/Minecraft/assets/index-BM_LwsAR.css">
 </head>
 
 <body class="page__body">
@@ -17,9 +17,7 @@
   <!-- 1. HEADER (Шапка сайта с интегрированным бургер-меню) -->
   <header class="mc-header">
     <div class="mc-header__logo-block">
-      <div class="mc-header__avatar">
-        <div class="mc-header__steve-eyes"></div>
-      </div>
+      <img src="/Minecraft/assets/logo-BzZuaggT.png" alt="Мастерская скинов NightLxrd" class="mc-header__logo-img">
       <span class="mc-header__nickname">NightLxrd</span>
     </div>
 
@@ -36,7 +34,7 @@
         <a href="https://x.com" target="_blank" class="mc-header__icon-link" title="Twitter / X">🐦</a>
       </div>
       <a href="#footer" class="mc-btn-cta">ЗАКАЗАТЬ</a>
-      
+
       <!-- 🍔 Пиксельная кнопка-бургер для смартфонов -->
       <button class="mc-burger" aria-label="Открыть меню">
         <span class="mc-burger__line"></span>
@@ -62,17 +60,15 @@
         <h1 class="hero-section__title">УНИКАЛЬНЫЕ СКИНЫ НА ЗАКАЗ</h1>
       </section>
 
-      <!-- Панель фильтров и живого поиска -->
+      <!-- Панель фильтров (БЕЗ ПОИСКА) -->
       <section class="mc-filter-bar">
-        <div class="mc-filter-bar__search-block">
-          <input type="text" placeholder="Поиск скина по названию..." class="mc-filter-bar__input">
-        </div>
         <div class="mc-filter-bar__buttons">
-          <button class="mc-filter-bar__btn mc-filter-bar__btn--active">Все скины</button>
-          <button class="mc-filter-bar__btn">HD Скины</button>
-          <button class="mc-filter-bar__btn">3D Модели</button>
+          <button type="button" class="mc-filter-bar__btn mc-filter-bar__btn--active">Все скины</button>
+          <button type="button" class="mc-filter-bar__btn">HD Скины</button>
+          <button type="button" class="mc-filter-bar__btn">3D Модели</button>
         </div>
       </section>
+
 
       <!-- Сетка со скинами (рендерится автоматически) -->
       <section class="skins-grid"></section>
@@ -84,9 +80,12 @@
     <div class="mc-footer__contacts">
       <p class="mc-footer__contacts-title">НАШИ КОНТАКТЫ:</p>
       <div class="mc-footer__contacts-grid">
-        <a href="#" class="mc-footer__contact-item mc-footer__contact-item--tg">✈️ Telegram: @crafter_skins</a>
-        <a href="#" class="mc-footer__contact-item mc-footer__contact-item--ds">💬 Discord: CrafterServer</a>
-        <a href="#" class="mc-footer__contact-item mc-footer__contact-item--tw">🐦 Twitter: @crafter_skins</a>
+        <a href="https://t.me" target="_blank" class="mc-footer__contact-item mc-footer__contact-item--tg">✈️ Telegram:
+          @nightlxrd</a>
+        <a href="https://discord.com" target="_blank" class="mc-footer__contact-item mc-footer__contact-item--ds">💬
+          Discord: @night.lxrd</a>
+        <a href="https://x.com" target="_blank" class="mc-footer__contact-item mc-footer__contact-item--tw">🐦 X
+          (Twitter): @lxrd_night</a>
       </div>
     </div>
     <p class="mc-footer__text">© 2026 NightLxrd. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</p>
@@ -97,3 +96,5 @@
   </footer>
 
 </body>
+
+</html>
