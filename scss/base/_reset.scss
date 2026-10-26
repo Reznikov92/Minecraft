@@ -19,7 +19,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 130%;
-  
+
   // Улучшаем отображение пиксельных шрифтов
   // font-smooth: never;
   -webkit-font-smoothing: none;
@@ -31,14 +31,13 @@ html {
   &__body {
     // 🌟 ОБНОВЛЕНО: Ставим базовый темный цвет
     background-color: vars.color(bg-grid-dark);
-    
+
     // 🌟 ОБНОВЛЕНО: Отрисовываем сетку клиента из градиентов
-    background-image: 
-      radial-gradient(vars.color(grid-line) 0.0938rem, transparent 0.0938rem),
+    background-image:
       linear-gradient(to right, rgba(90, 8, 15, 0.25) 0.0625rem, transparent 0.0625rem),
       linear-gradient(to bottom, rgba(90, 8, 15, 0.25) 0.0625rem, transparent 0.0625rem);
-    background-size: 1.5rem 1.5rem;
-    background-position: -0.0313rem -0.0313rem, 0 0, 0 0;
+    background-size: 3rem 3rem;
+    background-position: 0 0;
 
     font-family: vars.$font-main;
     color: vars.color(text-white);
