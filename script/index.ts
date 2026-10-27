@@ -12,9 +12,9 @@ const closeMenuBtn = document.querySelector<HTMLButtonElement>('.mc-mobile-menu_
 const mobileLinks = document.querySelectorAll<HTMLAnchorElement>('.mc-mobile-menu__link');
 
 // ================= 2. СИНХРОНИЗАЦИЯ LOCALSTORAGE =================
-let currentCategory: string = localStorage.getItem('selectedCategory') || 'Все скины';
+let currentCategory: string = localStorage.getItem('selectedCategory') || 'All Skins';
 
-// Сразу подсвечиваем нужную кнопку фильтра на основе данных из localStorage
+// Подсвечиваем нужную кнопку фильтра на английском
 filterButtons.forEach(button => {
    const btnText = button.textContent ? button.textContent.trim() : '';
    if (btnText === currentCategory) {
@@ -31,7 +31,7 @@ function playClickSound(): void {
    clickSound.pause();
    clickSound.currentTime = 0;
    clickSound.play().catch(err => {
-      console.warn("Браузер заблокировал автозвук до первого клика, но код продолжает работу!", err);
+      console.warn("Audio playback blocked by browser!", err);
    });
 }
 
@@ -46,11 +46,11 @@ function renderSkins(): void {
    const filteredSkins = skinsData.filter((skin) => {
       let matchesCategory = false;
 
-      if (currentCategory === 'Все скины') {
+      if (currentCategory === 'All Skins') {
          matchesCategory = true;
-      } else if (currentCategory === 'HD Скины' && skin.tag === 'hd') {
+      } else if (currentCategory === 'HD Skins' && skin.tag === 'hd') {
          matchesCategory = true;
-      } else if (currentCategory === '3D Модели' && skin.tag === '3d') {
+      } else if (currentCategory === '3D Models' && skin.tag === '3d') {
          matchesCategory = true;
       }
 
@@ -58,7 +58,7 @@ function renderSkins(): void {
    });
 
    if (filteredSkins.length === 0 && skinsGrid) {
-      skinsGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #ff5555; font-family: monospace; padding: 20px;">[ Скины не найдены ]</p>`;
+      skinsGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #ff5555; font-family: monospace; padding: 20px;">[ Skins not found ]</p>`;
       return;
    }
 
@@ -66,14 +66,19 @@ function renderSkins(): void {
 
    for (let j = 0; j < filteredSkins.length; j++) {
       const skin = filteredSkins[j]!;
-      const card = document.createElement('div');
+      const card = document.createElement('article');
       card.className = 'mc-card';
 
+      // Вычисляем правильный БЭМ-модификатор плашки под SCSS стили
+      const tagModifier = skin.tag === '3d' ? 'models' : 'hd';
+
       card.innerHTML = ` 
-    <div class="mc-card__preview">
-        <img src="${skin.img}" alt="${skin.name}" class="mc-card__img" loading="lazy">
-    </div>
-    <h3 class="mc-card__name">${skin.name}</h3>`;
+         <div class="mc-card__preview">
+             <img src="${skin.img}" alt="${skin.name}" class="mc-card__img" loading="lazy">
+         </div>
+         <h3 class="mc-card__name">${skin.name}</h3>
+         <span class="skin-card__tag skin-card__tag--${tagModifier}">${skin.tagText}</span>
+      `;
 
       fragment.appendChild(card);
    }
@@ -89,13 +94,13 @@ filterButtons.forEach(button => {
       filterButtons.forEach(btn => btn.classList.remove('mc-filter-bar__btn--active'));
       button.classList.add('mc-filter-bar__btn--active');
 
-      currentCategory = button.textContent ? button.textContent.trim() : 'Все скины';
+      currentCategory = button.textContent ? button.textContent.trim() : 'All Skins';
       localStorage.setItem('selectedCategory', currentCategory);
       renderSkins();
    });
 });
 
-// Бургер меню логика
+// Бургер меню
 burgerBtn?.addEventListener('click', () => {
    playClickSound();
    mobileMenu?.classList.toggle('mc-mobile-menu--open');
@@ -124,5 +129,5 @@ skinsGrid?.addEventListener('click', (e: MouseEvent) => {
    }
 });
 
-// Стартовый запуск отрисовки
+// Стартовый запуск
 renderSkins();

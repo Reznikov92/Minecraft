@@ -28,9 +28,9 @@ html {
 
 .page__body {
   background-color: #0b0203;
-  background-image: radial-gradient(#5a080f 0.0938rem, transparent 0.0938rem), linear-gradient(to right, rgba(90, 8, 15, 0.25) 0.0625rem, transparent 0.0625rem), linear-gradient(to bottom, rgba(90, 8, 15, 0.25) 0.0625rem, transparent 0.0625rem);
-  background-size: 1.5rem 1.5rem;
-  background-position: -0.0313rem -0.0313rem, 0 0, 0 0;
+  background-image: linear-gradient(to right, rgba(90, 8, 15, 0.25) 0.0625rem, transparent 0.0625rem), linear-gradient(to bottom, rgba(90, 8, 15, 0.25) 0.0625rem, transparent 0.0625rem);
+  background-size: 3rem 3rem;
+  background-position: 0 0;
   font-family: "Minecraft", "Press Start 2P", cursive;
   color: #ffffff;
   display: flex;
