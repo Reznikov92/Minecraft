@@ -1,24 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" class="page">
+<html lang="ru" class="page">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Skin Workshop</title>
+  <title>Мастерская Скинов</title>
   <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+  <!-- 🌟 ИСПРАВЛЕНО: Теперь стили ведут напрямую в SCSS. Vite сам всё скомпилирует, и шрифты встанут ровно -->
   <link rel="stylesheet" href="./scss/style.scss">
 </head>
+
 <body class="page__body">
 
-  <!-- 1. HEADER -->
+  <!-- 1. HEADER (Шапка сайта с интегрированным бургер-меню) -->
   <header class="mc-header">
     <div class="mc-header__logo-block">
-      <img src="./images/logo.png" alt="NightLxrd Skin Workshop" class="mc-header__logo-img">
+      <img src="./images/logo.png" alt="Мастерская скинов NightLxrd" class="mc-header__logo-img">
       <span class="mc-header__nickname">NightLxrd</span>
     </div>
 
+    <!-- Горизонтальная навигация для больших экранов -->
     <nav class="mc-header__nav">
-      <a href="#gallery" class="mc-header__nav-link">🎒<span class="mc-header__nav-text"> Gallery</span></a>
-      <a href="#footer" class="mc-header__nav-link">📝<span class="mc-header__nav-text"> Contacts</span></a>
+      <a href="#gallery" class="mc-header__nav-link">🎒<span class="mc-header__nav-text"> Галерея</span></a>
+      <a href="#footer" class="mc-header__nav-link">📝<span class="mc-header__nav-text"> Контакты</span></a>
     </nav>
 
     <div class="mc-header__actions">
@@ -27,63 +32,69 @@
         <a href="#" class="mc-header__icon-link" title="Telegram">✈️</a>
         <a href="https://x.com" target="_blank" class="mc-header__icon-link" title="Twitter / X">🐦</a>
       </div>
-      <a href="#footer" class="mc-btn-cta">ORDER</a>
+      <a href="#footer" class="mc-btn-cta">ЗАКАЗАТЬ</a>
 
-      <button class="mc-burger" aria-label="Open menu">
+      <!-- 🍔 Пиксельная кнопка-бургер для смартфонов -->
+      <button class="mc-burger" aria-label="Открыть меню">
         <span class="mc-burger__line"></span>
         <span class="mc-burger__line"></span>
         <span class="mc-burger__line"></span>
       </button>
     </div>
 
-    <!-- Mobile Menu -->
+    <!-- 🚪 Выезжающая шторка мобильного меню -->
     <div class="mc-mobile-menu">
-      <button class="mc-mobile-menu__close" aria-label="Close menu">❌</button>
+      <button class="mc-mobile-menu__close" aria-label="Закрыть меню">❌</button>
       <nav class="mc-mobile-menu__nav">
-        <a href="#gallery" class="mc-mobile-menu__link">🎒 Gallery</a>
-        <a href="#footer" class="mc-mobile-menu__link">📝 Contacts</a>
+        <a href="#gallery" class="mc-mobile-menu__link">🎒 Галерея</a>
+        <a href="#footer" class="mc-mobile-menu__link">📝 Контакты</a>
       </nav>
     </div>
   </header>
 
-  <!-- 2. MAIN -->
+  <!-- 2. MAIN (Основная галерея) -->
   <main class="mc-main">
     <div id="gallery">
       <section class="hero-section">
-        <h1 class="hero-section__title">UNIQUE CUSTOM SKINS</h1>
+        <h1 class="hero-section__title">УНИКАЛЬНЫЕ СКИНЫ НА ЗАКАЗ</h1>
       </section>
 
       <!-- Панель фильтров (БЕЗ ПОИСКА) -->
       <section class="mc-filter-bar">
         <div class="mc-filter-bar__buttons">
-          <button type="button" class="mc-filter-bar__btn mc-filter-bar__btn--active">All Skins</button>
-          <button type="button" class="mc-filter-bar__btn">HD Skins</button>
-          <button type="button" class="mc-filter-bar__btn">3D Models</button>
+          <button type="button" class="mc-filter-bar__btn mc-filter-bar__btn--active">Все скины</button>
+          <button type="button" class="mc-filter-bar__btn">HD Скины</button>
+          <button type="button" class="mc-filter-bar__btn">3D Модели</button>
         </div>
       </section>
 
-      <!-- Сетка со скинами -->
+
+      <!-- Сетка со скинами (рендерится автоматически) -->
       <section class="skins-grid"></section>
     </div>
   </main>
 
-  <!-- 3. FOOTER -->
+  <!-- 3. FOOTER (Подвал) -->
   <footer class="mc-footer" id="footer">
     <div class="mc-footer__contacts">
-      <p class="mc-footer__contacts-title">OUR CONTACTS:</p>
+      <p class="mc-footer__contacts-title">НАШИ КОНТАКТЫ:</p>
       <div class="mc-footer__contacts-grid">
-        <a href="https://t.me" target="_blank" class="mc-footer__contact-item mc-footer__contact-item--tg">✈️ Telegram: @nightlxrd</a>
-        <a href="https://discord.com" target="_blank" class="mc-footer__contact-item mc-footer__contact-item--ds">💬 Discord: @night.lxrd</a>
-        <a href="https://x.com" target="_blank" class="mc-footer__contact-item mc-footer__contact-item--tw">🐦 X (Twitter): @lxrd_night</a>
+        <a href="https://t.me" target="_blank" class="mc-footer__contact-item mc-footer__contact-item--tg">✈️ Telegram:
+          @nightlxrd</a>
+        <a href="https://discord.com" target="_blank" class="mc-footer__contact-item mc-footer__contact-item--ds">💬
+          Discord: @night.lxrd</a>
+        <a href="https://x.com" target="_blank" class="mc-footer__contact-item mc-footer__contact-item--tw">🐦 X
+          (Twitter): @lxrd_night</a>
       </div>
     </div>
-    <p class="mc-footer__text">© 2026 NightLxrd. ALL RIGHTS RESERVED.</p>
+    <p class="mc-footer__text">© 2026 NightLxrd. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</p>
     <p class="mc-footer__disclaimer">NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG.</p>
     <div class="mc-footer__links">
-      <a href="#" class="mc-footer__link">Privacy Policy</a>
+      <a href="#" class="mc-footer__link">Политика конфиденциальности</a>
     </div>
   </footer>
 
-  <script type="module" src="/script/index.ts"></script>
+  <script type="module" src="./script/index.ts"></script>
 </body>
+
 </html>
